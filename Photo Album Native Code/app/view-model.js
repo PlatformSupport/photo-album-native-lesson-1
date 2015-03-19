@@ -39,30 +39,6 @@ var item8 = {
     itemImage: imageFromSource("08.jpg")
 };
 
-// The following is the advanced way to create a class for the PhotoAlbumModel - for convenience use the simple implementation with Observable Object
-/* var __extends = this.__extends || function (d, b) {
-    for (var p in b)
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-
-    function __() {
-        this.constructor = d;
-    }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
-
-var PhotoAlbumModel = (function (_super) {
-    __extends(PhotoAlbumModel, _super);
-
-    function PhotoAlbumModel() {
-        _super.call(this);
-        // Step 5 - Action a
-        this.set("message", "Add new images");
-    }
-
-    return PhotoAlbumModel;
-})(observable.Observable); */
-
 var photoAlbumModel = new observable.Observable();
 photoAlbumModel.set("message", "Add new images");
 
