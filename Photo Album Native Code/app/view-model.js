@@ -29,6 +29,9 @@ var item5 = {
 var item6 = {
     itemImage: imageFromSource("06.jpg")
 };
+
+array.push([item1, item2, item3, item4, item5, item6]);
+
 var item7 = {
     itemImage: imageFromSource("07.jpg")
 };
@@ -36,9 +39,8 @@ var item8 = {
     itemImage: imageFromSource("08.jpg")
 };
 
-array.push([item1, item2, item3, item4, item5, item6]);
-
-var __extends = this.__extends || function (d, b) {
+// The following is the advanced way to create a class for the PhotoAlbumModel - for convenience use the simple implementation with Observable Object
+/* var __extends = this.__extends || function (d, b) {
     for (var p in b)
         if (b.hasOwnProperty(p)) d[p] = b[p];
 
@@ -59,9 +61,12 @@ var PhotoAlbumModel = (function (_super) {
     }
 
     return PhotoAlbumModel;
-})(observable.Observable);
+})(observable.Observable); */
 
-Object.defineProperty(PhotoAlbumModel.prototype, "photoItems", {
+var photoAlbumModel = new observable.Observable();
+photoAlbumModel.set("message", "Add new images");
+
+Object.defineProperty(photoAlbumModel, "photoItems", {
     get: function () {
         return array;
     },
@@ -69,11 +74,11 @@ Object.defineProperty(PhotoAlbumModel.prototype, "photoItems", {
     configurable: true
 });
 
-PhotoAlbumModel.prototype.tapAction = function () {
+photoAlbumModel.tapAction = function () {
     array.push(item7);
     array.push(item8);
 
     this.set("message", "Images added. Total images: " + array.length);
 };
 
-exports.PhotoAlbumModel = PhotoAlbumModel;
+exports.photoAlbumModel = photoAlbumModel;
